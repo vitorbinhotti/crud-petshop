@@ -3,7 +3,7 @@ use db_petshop;
 
 create table cliente(
     id int auto_increment primary key,
-    nome varchar(100) not null,
+    nome varchar(100) not null, 
     cpf varchar(11) not null,
     telefone varchar(15) not null,
     email varchar(100) not null
@@ -11,12 +11,12 @@ create table cliente(
 
 create table pet(
     id int auto_increment primary key,
-    nome varchar(100) not null,
+    nome varchar(100) not null,    
     especie varchar(50) not null,
     porte varchar(20) not null,
     nascimento date not null,
     cliente_id int,
-    foreign key (cliente_id) references cliente(id)
+    foreign key (cliente_id) references cliente(id) 
 );
 
 create table servico(
