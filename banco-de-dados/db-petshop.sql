@@ -1,38 +1,38 @@
-create database db_petshop;
-use db_petshop;
+CREATE DATABASE db_petshop;
+USE db_petshop;
 
-create table cliente(
-    id int auto_increment primary key,
-    nome varchar(100) not null, 
-    cpf varchar(11) not null,
-    telefone varchar(15) not null,
-    email varchar(100) not null
+CREATE TABLE cliente(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL, 
+    cpf VARCHAR(11) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    email VARCHAR(100) NOT NULL
 );
 
-create table pet(
-    id int auto_increment primary key,
-    nome varchar(100) not null,    
-    especie varchar(50) not null,
-    porte varchar(20) not null,
-    nascimento date not null,
-    cliente_id int,
-    foreign key (cliente_id) references cliente(id) 
+CREATE TABLE pet(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,    
+    especie VARCHAR(50) NOT NULL,
+    porte ENUM('GRANDE', 'PEQUENO', 'MEDIO') NOT NULL,
+    nascimento DATE NOT NULL,
+    cliente_id INT,
+    FOREIGN KEY (cliente_id) REFERENCES cliente(id) 
 );
 
-create table servico(
-    id int auto_increment primary key,
-    nome varchar(100) not null,
-    preco decimal(10,2) not null,
-    duracao_min int not null
+CREATE TABLE servico(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    duracao_min INT NOT NULL
 );
 
-create table agendamento(
-    id int auto_increment primary key,
-    data_hora datetime not null,
-    status varchar(20) not null,
-    observacoes text,
-    pet_id int,
-    servico_id int,
-    foreign key (pet_id) references pet(id),
-    foreign key (servico_id) references servico(id)
+CREATE TABLE agendamento(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data_hora DATETIME NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    observacoes TEXT,
+    pet_id INT,
+    servico_id INT,
+    FOREIGN KEY (pet_id) REFERENCES pet(id),
+    FOREIGN KEY (servico_id) REFERENCES servico(id)
 );
