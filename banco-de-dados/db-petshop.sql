@@ -29,8 +29,8 @@ CREATE TABLE servico(
 CREATE TABLE agendamento(
     id INT AUTO_INCREMENT PRIMARY KEY,
     data_hora DATETIME NOT NULL,
-    status VARCHAR(20) NOT NULL,
-    observacoes TEXT,
+    status ENUM('Agendado', 'Em andamento', 'cancelado') NOT NULL,
+    observacoes TEXT, 
     pet_id INT,
     servico_id INT,
     FOREIGN KEY (pet_id) REFERENCES pet(id),
